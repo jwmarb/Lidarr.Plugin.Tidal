@@ -16,6 +16,28 @@ public class API
         _session = session;
     }
 
+    /// <summary>
+    /// Minimum spacing between calls, enforced by Lidarr's rate limiter.
+    /// </summary>
+    /// <remarks>
+    /// Tidal tolerates bursts on most endpoints but penalises sustained traffic to
+    /// <c>/albums/{id}</c>, and that penalty outlives several minutes of silence. A small
+    /// pace costs little on a cold cache and avoids tripping it at all.
+    /// </remarks>
+    private const double RequestRateLimitSeconds = 0.2;
+
+    /// <summary>How many times a throttled call is retried before giving up.</summary>
+    internal int MaxThrottleRetries { get; set; } = 5;
+
+    /// <summary>
+    /// Base unit for the exponential backoff, and the ceiling applied to
+    /// <c>Retry-After</c>. Overridden in tests so throttle behaviour can be asserted
+    /// without the suite waiting real minutes.
+    /// </summary>
+    internal TimeSpan ThrottleBackoffUnit { get; set; } = TimeSpan.FromSeconds(1);
+
+    internal TimeSpan ThrottleBackoffCeiling { get; set; } = TimeSpan.FromSeconds(60);
+
     private IHttpClient _httpClient;
     private Session _session;
     private TidalUser? _activeUser;
@@ -79,14 +101,19 @@ public class API
         Dictionary<string, string>? urlParameters = null,
         Dictionary<string, string>? headers = null,
         string? baseUrl = null,
-        CancellationToken token = default
+        CancellationToken token = default,
+        int attempt = 0
     )
     {
         // currently the method is ignored, but that doesn't matter much since it's all GET
 
         baseUrl ??= Globals.API_V1_LOCATION;
 
-        var request = _httpClient.BuildRequest(baseUrl).Resource(path);
+        // Pace these calls through Lidarr's rate limiter. Without a RateLimit the limiter
+        // skips the request entirely (HttpClient.ExecuteRequestAsync only waits when
+        // RateLimit != TimeSpan.Zero), so album lookups used to fire back-to-back and
+        // provoke a sustained 429 penalty on /albums/{id}.
+        var request = _httpClient.BuildRequest(baseUrl).Resource(path).WithRateLimit(RequestRateLimitSeconds);
 
         headers ??= [];
         urlParameters ??= [];
@@ -112,12 +139,22 @@ public class API
 
         var response = await _httpClient.ProcessRequestAsync(request);
 
-        // this is a side-precaution, in my testing it wouldn't happen assuming lidarr is properly rate limiting
+        // Tidal throttles per-endpoint and the penalty is cumulative: retrying without
+        // backoff keeps it alive, turning a transient 429 into a self-sustaining one.
+        // Back off exponentially and give up rather than recursing unbounded.
         if (response.StatusCode == HttpStatusCode.TooManyRequests)
         {
-            await Task.Delay(Random.Shared.Next(100, 1000));
-            return await Call(method, path, formParameters, urlParameters, headers, baseUrl, token);
+            if (attempt >= MaxThrottleRetries)
+            {
+                throw new APIException(
+                    $"Tidal is rate limiting {path} and did not recover after {MaxThrottleRetries} retries.");
+            }
+
+            await Task.Delay(GetThrottleDelay(response, attempt), token);
+
+            return await Call(method, path, formParameters, urlParameters, headers, baseUrl, token, attempt + 1);
         }
+
 
         string resp = response.Content;
         JObject json = JObject.Parse(resp);
@@ -129,7 +166,7 @@ public class API
             {
                 bool refreshed = await _session.AttemptTokenRefresh(_activeUser, token);
                 if (refreshed)
-                    return await Call(method, path, formParameters, urlParameters, headers, baseUrl, token);
+                    return await Call(method, path, formParameters, urlParameters, headers, baseUrl, token, attempt);
             }
         }
 
@@ -160,6 +197,43 @@ public class API
         }
 
         return json;
+    }
+
+    /// <summary>
+    /// Delay before retrying a throttled request: honours <c>Retry-After</c> when Tidal
+    /// sends it, otherwise backs off exponentially with jitter.
+    /// </summary>
+    private TimeSpan GetThrottleDelay(HttpResponse response, int attempt)
+    {
+        var retryAfter = response.Headers.GetSingleValue("Retry-After");
+
+        if (!string.IsNullOrWhiteSpace(retryAfter))
+        {
+            // Either delta-seconds or an HTTP-date, per RFC 9110.
+            if (int.TryParse(retryAfter, out var seconds) && seconds > 0)
+            {
+                var requested = TimeSpan.FromSeconds(seconds);
+                return requested > ThrottleBackoffCeiling ? ThrottleBackoffCeiling : requested;
+            }
+
+            if (DateTimeOffset.TryParse(retryAfter, out var when))
+            {
+                var delta = when - DateTimeOffset.UtcNow;
+                if (delta > TimeSpan.Zero)
+                {
+                    return delta > ThrottleBackoffCeiling ? ThrottleBackoffCeiling : delta;
+                }
+            }
+        }
+
+        // 1x, 2x, 4x, 8x, 16x the backoff unit (+ jitter) - enough for the penalty to
+        // lapse, while the retry cap stops a search from spinning indefinitely.
+        var backoff = ThrottleBackoffUnit * Math.Pow(2, attempt);
+        var jitter = ThrottleBackoffUnit * (Random.Shared.NextDouble() * 0.5);
+
+        var delay = backoff + jitter;
+
+        return delay > ThrottleBackoffCeiling ? ThrottleBackoffCeiling : delay;
     }
 
     public static string CompleteTitleFromPage(JToken page)

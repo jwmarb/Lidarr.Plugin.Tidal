@@ -16,4 +16,15 @@
     <ProjectReference Include="..\..\ext\Lidarr\src\NzbDrone.Core\Lidarr.Core.csproj" />
   </ItemGroup>
 
+  <!--
+    Exposes the throttle-tuning knobs on API (MaxThrottleRetries, ThrottleBackoffUnit,
+    ThrottleBackoffCeiling) so the retry tests can assert backoff behaviour in
+    milliseconds instead of making the suite wait real minutes.
+  -->
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>Lidarr.Plugin.Tidal.Tests</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
+
 </Project>
