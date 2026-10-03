@@ -28,16 +28,22 @@ namespace NzbDrone.Core.Indexers.Tidal
                 torrentInfos.AddRange(task);
             }
 
+            // Track hits are reported as their parent album, so the same album can appear on
+            // many hits. Track which albums have already been emitted - including ones fetched
+            // earlier in this very loop - so each is fetched and emitted exactly once.
+            var processedAlbumIds = new HashSet<string>(jsonResponse.AlbumResults.Items.Select(a => a.Id));
+
             foreach (var track in jsonResponse.TrackResults.Items)
             {
-                // make sure the album hasn't already been processed before doing this
-                if (!jsonResponse.AlbumResults.Items.Any(a => a.Id == track.Album.Id))
+                if (!processedAlbumIds.Add(track.Album.Id))
                 {
-                    var processTrackTask = ProcessTrackAlbumResultAsync(track);
-                    processTrackTask.Wait();
-                    if (processTrackTask.Result != null)
-                        torrentInfos.AddRange(processTrackTask.Result);
+                    continue;
                 }
+
+                var processTrackTask = ProcessTrackAlbumResultAsync(track);
+                processTrackTask.Wait();
+                if (processTrackTask.Result != null)
+                    torrentInfos.AddRange(processTrackTask.Result);
             }
 
             return torrentInfos
@@ -50,15 +56,22 @@ namespace NzbDrone.Core.Indexers.Tidal
             // determine available audio qualities
             List<AudioQuality> qualityList = new() { AudioQuality.LOW, AudioQuality.HIGH };
 
-            if (result.MediaMetadata.Tags.Contains("HIRES_LOSSLESS"))
+            // mediaMetadata (or its tags) can be absent on some payloads; treat that as
+            // "no lossless advertised" rather than losing every release in the response.
+            var tags = result.MediaMetadata?.Tags ?? Array.Empty<string>();
+
+            if (tags.Contains("HIRES_LOSSLESS"))
             {
                 qualityList.Add(AudioQuality.LOSSLESS);
                 qualityList.Add(AudioQuality.HI_RES_LOSSLESS);
             }
-            else if (result.MediaMetadata.Tags.Contains("LOSSLESS"))
+            else if (tags.Contains("LOSSLESS"))
                 qualityList.Add(AudioQuality.LOSSLESS);
 
-            var quality = Enum.Parse<AudioQuality>(result.AudioQuality);
+            // NOTE: result.AudioQuality is deliberately not parsed here. It is a free-form
+            // string upstream (MQA and DOLBY_ATMOS have both been observed) and Enum.Parse
+            // threw on anything outside AudioQuality, discarding the whole page of results.
+            // The qualities offered are derived from mediaMetadata.tags above instead.
             return qualityList.Select(q => ToReleaseInfo(result, q));
         }
 
