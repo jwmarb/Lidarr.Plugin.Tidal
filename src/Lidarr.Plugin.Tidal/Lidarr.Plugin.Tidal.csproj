@@ -40,7 +40,7 @@
 
 	<!-- Windows-only developer convenience copy; also skipped when ILRepack is skipped (e.g. test runs). -->
 	<Target Condition="'$(Configuration)' == 'Debug' And '$(SkipILRepack)' != 'true' And '$(OS)' == 'Windows_NT'" Name="PostBuild" AfterTargets="ILRepacker">
-		<Exec ContinueOnError="true" Command="COPY &quot;$(TargetPath)&quot; &quot;C:\ProgramData\Lidarr\plugins\TrevTV\Lidarr.Plugin.Tidal&quot;" />
+		<Exec ContinueOnError="true" Command="COPY &quot;$(TargetPath)&quot; &quot;C:\ProgramData\Lidarr\plugins\jwmarb\Lidarr.Plugin.Tidal&quot;" />
 	</Target>
 
 </Project>
