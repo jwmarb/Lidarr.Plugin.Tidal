@@ -1,7 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <!-- ILRepack -->
-    <Target Name="ILRepacker" AfterTargets="Build">
+    <!--
+        SkipILRepack=true leaves the assemblies un-merged. ILRepack internalizes
+        TidalSharp into the plugin DLL, which makes the plugin's public surface
+        (e.g. TidalAPI.Client) reference types the test assembly cannot bind to.
+        The test project sets this so it compiles and runs against the real
+        TidalSharp assembly; shipping builds are unaffected.
+    -->
+    <Target Name="ILRepacker" AfterTargets="Build" Condition="'$(SkipILRepack)' != 'true'">
         <ItemGroup>
 			<InputAssemblies Include="$(OutputPath)\Lidarr.Plugin.Tidal.dll" />
 			<InputAssemblies Include="$(OutputPath)\TidalSharp.dll" />
