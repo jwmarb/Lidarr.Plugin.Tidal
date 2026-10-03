@@ -51,16 +51,35 @@ Note that every release Lidarr sees is an **album** — the parser resolves a ma
 
 ### Prerequisites 📦
 
-- A Lidarr instance on the `plugins` branch — the [`ghcr.io/hotio/lidarr:pr-plugins`](https://github.com/hotio/lidarr) image is the usual way to get one.
+- A Lidarr instance on the `plugins` branch, built from a **custom image** — see below. The stock [`ghcr.io/hotio/lidarr:pr-plugins`](https://github.com/hotio/lidarr) image does not ship FFmpeg.
 - An active [Tidal](https://tidal.com/) subscription (HiFi or above for lossless).
-- Optionally [FFmpeg](https://ffmpeg.org/), only if you want the format-conversion settings.
+- [FFmpeg](https://ffmpeg.org/) **inside the Lidarr container**, for the FLAC remux and the other conversion settings.
 
 ### Running Lidarr 🐳
+
+> [!IMPORTANT]
+> **A custom image is required.** The official plugins image contains no FFmpeg binary, and
+> the plugin shells out to `ffmpeg`/`ffprobe` to remux downloads. Without it, Tidal's
+> lossless tracks import with a bitrate of `-2147483648 kbps` and are misdetected as AAC —
+> see [Why the remux matters](#why-the-remux-matters-) below. Build the image below rather
+> than using `ghcr.io/hotio/lidarr:pr-plugins` directly.
+
+Put this `Dockerfile` next to your compose file:
+
+```Dockerfile
+FROM ghcr.io/hotio/lidarr:pr-plugins
+
+# The Tidal plugin shells out to these for the FLAC remux.
+# Do not add a USER line: this image's s6 init must start as root.
+RUN apk add --no-cache ffmpeg
+```
+
+Then point the service at it with `build:` instead of `image:`:
 
 ```yml
 services:
   lidarr:
-    image: ghcr.io/hotio/lidarr:pr-plugins
+    build: .
     container_name: lidarr
     environment:
       - PUID=1000
@@ -75,13 +94,15 @@ services:
     restart: unless-stopped
 ```
 
-To make FFmpeg available to the conversion settings, build from this `Dockerfile` instead of using the image directly:
+Bring it up with `docker compose up -d --build`, and confirm FFmpeg is reachable:
 
-```Dockerfile
-FROM ghcr.io/hotio/lidarr:pr-plugins
-
-RUN apk add --no-cache ffmpeg
+```sh
+docker compose exec lidarr ffmpeg -version
 ```
+
+If that prints a version, the remux will work. The download client's **Test** button also
+fails with a clear message when the conversion settings are on but FFmpeg is missing, so a
+broken setup is caught at save time rather than silently at download time.
 
 ### Installing the plugin
 
@@ -113,7 +134,7 @@ RUN apk add --no-cache ffmpeg
 | Setting | Default | Description |
 | --- | --- | --- |
 | `Download Path` | — | Where tracks are written before Lidarr imports them. |
-| `Extract FLAC From M4A` | `false` | Extracts FLAC data from Tidal's M4A files. Needs FFmpeg. |
+| `Remux To FLAC` | `false` | **Recommended.** Rewrites Tidal's fragmented M4A into a real FLAC container. Lossless. Needs FFmpeg. |
 | `Re-encode AAC into MP3` | `false` | Re-encodes AAC to MP3. Needs FFmpeg. |
 | `Save Synced Lyrics` | `false` | Writes a `.lrc` file when synced lyrics exist. |
 | `Use LRCLIB as Backup Lyric Provider` | `false` | Falls back to LRCLIB when Tidal has no lyrics. |
@@ -121,7 +142,31 @@ RUN apk add --no-cache ffmpeg
 | `Download Delay Minimum` | `3` | Lower bound of that pause, in seconds. |
 | `Download Delay Maximum` | `5` | Upper bound of that pause, in seconds. |
 
-Only enable the FFmpeg-dependent settings if FFmpeg is genuinely available to Lidarr; otherwise downloads fail.
+If a conversion setting is enabled without FFmpeg present, the download client's **Test**
+fails rather than letting every track quietly skip conversion. Should a remux fail at
+download time anyway, the original file is kept and the track still imports.
+
+### Why the remux matters 🎵
+
+Tidal delivers lossless audio as DASH segments, which the plugin concatenates into a
+**fragmented MP4**. The file plays fine, but its top-level `mvhd`/`mdhd` duration is `0`,
+because fMP4 keeps timing in the per-fragment `moof` headers.
+
+That zero cascades. TagLib reports duration 0 and bitrate 0, so Lidarr falls back to
+estimating the bitrate as `(size * 8) / (duration * 1024)` — a division by zero, which
+yields `Infinity` and casts to `int.MinValue`. Worse, with bitrate and bit depth both
+reading 0, the quality parser mislabels lossless FLAC as lossy AAC, so quality profiles and
+upgrade decisions act on the wrong information.
+
+Enabling **Remux To FLAC** rebuilds the container with `-acodec copy` — no re-encode, not a
+single sample altered. Measured on a real import of *The Life of a Showgirl*:
+
+| Lidarr Audio Info | Without remux | With remux |
+| --- | --- | --- |
+| Quality | `AAC-VBR` | `FLAC` |
+| Bitrate | `-2147483648 kbps` | `927 kbps` |
+| Bit depth | *(absent)* | `16bit` |
+| Codec | *(absent)* | `FLAC` |
 
 ## What's different in this fork 🔧
 
@@ -131,6 +176,7 @@ Only enable the FFmpeg-dependent settings if FFmpeg is genuinely available to Li
 | Removed a dead `Enum.Parse` | `audioQuality` is a free-form string upstream (`MQA` and `DOLBY_ATMOS` both occur). Parsing it threw and discarded every release in the response — and the parsed value was never used. |
 | Null-guarded `mediaMetadata` | An album payload without `mediaMetadata` threw `NullReferenceException` and lost the whole page. |
 | Backoff and a retry cap on HTTP 429 | The old handler retried with a flat delay, no backoff and no cap. Tidal's throttle is cumulative, so retrying renewed it and searches spun for minutes. |
+| FLAC remux, hardened | Tidal's fragmented MP4 made Lidarr report `-2147483648 kbps` and mislabel lossless FLAC as AAC. The remux is now verified before it replaces the original, survives a missing FFmpeg (which throws `Win32Exception`, not `FFMPEGException`, so the old code let it fail the track), logs why it skipped, and is surfaced by the client's **Test**. |
 
 Measured in a real Lidarr container, same search, before and after the throttle fix:
 
@@ -143,7 +189,8 @@ Measured in a real Lidarr container, same search, before and after the throttle 
 
 ## Testing 🧪
 
-The suite is 55 tests: offline unit tests over recorded API payloads, plus opt-in integration tests against the live Tidal API.
+The suite is 64 tests: 56 offline unit tests over recorded API payloads and real audio
+fixtures, plus 8 opt-in integration tests against the live Tidal API.
 
 ```sh
 dotnet test src/Lidarr.Plugin.Tidal.Tests/Lidarr.Plugin.Tidal.Tests.csproj \

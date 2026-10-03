@@ -9,6 +9,16 @@
 		<AdditionalFiles Remove="E:\Projects\GitHub\Lidarr.Plugin.Tidal\src\stylecop.json" />
 	</ItemGroup>
 
+	<!--
+		Exposes the remux helpers (DownloadItem.HandleAudioConversion, IsUsableAudioFile)
+		to the test assembly so conversion behaviour can be asserted against real files.
+	-->
+	<ItemGroup>
+		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+			<_Parameter1>Lidarr.Plugin.Tidal.Tests</_Parameter1>
+		</AssemblyAttribute>
+	</ItemGroup>
+
 	<ItemGroup>
 		<PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.34.2">
 			<PrivateAssets>all</PrivateAssets>

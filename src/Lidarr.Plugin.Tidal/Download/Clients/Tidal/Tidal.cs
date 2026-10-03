@@ -70,7 +70,17 @@ namespace NzbDrone.Core.Download.Clients.Tidal
 
         protected override void Test(List<ValidationFailure> failures)
         {
-            // given the way the code is setup, we don't really need to do anything here
+            // The conversion settings shell out to ffmpeg/ffprobe. If they are enabled but
+            // the binaries are missing, every track would silently skip conversion, so say so
+            // here rather than letting it look like it worked.
+            if ((Settings.ExtractFlac || Settings.ReEncodeAAC) &&
+                !Queue.DownloadItem.IsFFMpegAvailable(out var error))
+            {
+                var field = Settings.ExtractFlac ? nameof(Settings.ExtractFlac) : nameof(Settings.ReEncodeAAC);
+
+                failures.Add(new ValidationFailure(field,
+                    $"FFMPEG is required for this option but is not available to Lidarr. {error}"));
+            }
         }
     }
 }

@@ -21,7 +21,7 @@ namespace NzbDrone.Core.Download.Clients.Tidal
         [FieldDefinition(0, Label = "Download Path", Type = FieldType.Textbox)]
         public string DownloadPath { get; set; } = "";
 
-        [FieldDefinition(1, Label = "Extract FLAC From M4A", HelpText = "Extracts FLAC data from the Tidal-provided M4A files.", HelpTextWarning = "This requires FFMPEG and FFProbe to be available to Lidarr.", Type = FieldType.Checkbox)]
+        [FieldDefinition(1, Label = "Remux To FLAC", HelpText = "Rewrites Tidal's fragmented M4A files into a standard FLAC container. Lossless - the audio is copied, not re-encoded. Fixes tracks importing with a nonsensical bitrate and being misdetected as AAC.", HelpTextWarning = "This requires FFMPEG and FFPROBE to be available to Lidarr. See the README for a Dockerfile.", Type = FieldType.Checkbox)]
         public bool ExtractFlac { get; set; } = false;
 
         [FieldDefinition(2, Label = "Re-encode AAC into MP3", HelpText = "Re-encodes AAC data from the Tidal-provided M4A files into MP3s.", HelpTextWarning = "This requires FFMPEG and FFProbe to be available to Lidarr.", Type = FieldType.Checkbox)]

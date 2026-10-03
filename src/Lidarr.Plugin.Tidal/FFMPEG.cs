@@ -6,6 +6,41 @@ namespace NzbDrone.Core.Plugins;
 
 internal class FFMPEG
 {
+    /// <summary>
+    /// Throws unless both <c>ffmpeg</c> and <c>ffprobe</c> can be launched.
+    /// </summary>
+    /// <remarks>
+    /// A missing binary surfaces from <see cref="System.Diagnostics.Process.Start()"/> as a
+    /// <c>Win32Exception</c> rather than an <see cref="FFMPEGException"/>, so callers that
+    /// only guard against the latter would let it escape. This normalises both into
+    /// <see cref="FFMPEGException"/> with a message that names the missing tool.
+    /// </remarks>
+    public static void AssertAvailable()
+    {
+        foreach (var executable in new[] { "ffmpeg", "ffprobe" })
+        {
+            try
+            {
+                var (exitCode, _, _, _) = Call(executable, "-version");
+
+                if (exitCode != 0)
+                {
+                    throw new FFMPEGException($"'{executable} -version' exited with code {exitCode}.");
+                }
+            }
+            catch (FFMPEGException)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw new FFMPEGException(
+                    $"'{executable}' could not be run. Install it in the Lidarr container and make " +
+                    $"sure it is on PATH. ({ex.Message})", ex);
+            }
+        }
+    }
+
     public static string[] ProbeCodecs(string filePath)
     {
         var (exitCode, output, errorOutput, a) = Call("ffprobe", $"-select_streams a -show_entries stream=codec_name:stream_tags=language -of default=nk=1:nw=1 {EncodeParameterArgument(filePath)}");

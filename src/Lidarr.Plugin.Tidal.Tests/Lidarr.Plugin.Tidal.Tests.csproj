@@ -57,9 +57,15 @@
     <None Remove="Tools\**\*" />
   </ItemGroup>
 
-  <!-- Recorded (and credential-scrubbed) Tidal API payloads used by the offline tests. -->
+  <!--
+    Recorded (and credential-scrubbed) Tidal API payloads used by the offline tests, plus
+    a real fragmented-MP4 audio fixture for the remux tests.
+  -->
   <ItemGroup>
     <None Include="Fixtures\**\*.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Fixtures\Audio\**\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
