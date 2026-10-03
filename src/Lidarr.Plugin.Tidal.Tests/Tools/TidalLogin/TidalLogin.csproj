@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Interactive PKCE login helper. Separate executable rather than a test, because it
+    needs stdin and must hold one Session alive across both halves of the OAuth exchange.
+    See Tools/TidalLogin/TidalLogin.cs for why relaying a redirect URL between processes
+    cannot work.
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <IsPackable>false</IsPackable>
+    <AssemblyName>TidalLogin</AssemblyName>
+    <RootNamespace>Lidarr.Plugin.Tidal.Tests.Tools</RootNamespace>
+    <StartupObject>Lidarr.Plugin.Tidal.Tests.Tools.TidalLogin</StartupObject>
+
+    <!-- Not a shipped artifact; keep upstream's analyzer strictness out of the way. -->
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <NoWarn>$(NoWarn);SA0001;SA1200;SA1633;CS1591</NoWarn>
+
+    <!--
+      This project lives under the .Test project's directory, so the repo-wide
+      Directory.Build.props would route its output to _tests\ and treat it as a test
+      project. Keep it in its own folder instead.
+    -->
+    <OutputPath>$(MSBuildThisFileDirectory)bin\$(Configuration)\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <!-- TidalLogin.cs is picked up by the SDK's default globbing. -->
+
+  <ItemGroup>
+    <!-- Reuses the tests' real-network IHttpClient and the singleton reset helper. -->
+    <ProjectReference Include="..\..\Lidarr.Plugin.Tidal.Tests.csproj" />
+  </ItemGroup>
+
+</Project>
