@@ -1,0 +1,555 @@
+{
+  "albums": {
+    "limit": 100,
+    "offset": 0,
+    "totalNumberOfItems": 0,
+    "items": []
+  },
+  "tracks": {
+    "limit": 100,
+    "offset": 0,
+    "totalNumberOfItems": 9,
+    "items": [
+      {
+        "id": 198801473,
+        "title": "the 1",
+        "duration": 212,
+        "replayGain": 0.0,
+        "peak": 0.0,
+        "allowStreaming": true,
+        "streamReady": true,
+        "payToStream": false,
+        "adSupportedStreamReady": true,
+        "djReady": true,
+        "stemReady": false,
+        "streamStartDate": "2023-02-02T00:00:00.000+0000",
+        "premiumStreamingOnly": false,
+        "trackNumber": 1,
+        "volumeNumber": 1,
+        "version": null,
+        "popularity": 0,
+        "copyright": "℗ 2020 Taylor Swift",
+        "bpm": null,
+        "key": null,
+        "keyScale": null,
+        "url": "http://www.tidal.com/track/198801473",
+        "isrc": "USUG12003317",
+        "editable": false,
+        "explicit": true,
+        "audioQuality": "LOW",
+        "audioModes": [
+          "DOLBY_ATMOS"
+        ],
+        "mediaMetadata": {
+          "tags": [
+            "DOLBY_ATMOS"
+          ]
+        },
+        "upload": false,
+        "accessType": null,
+        "spotlighted": false,
+        "ai": false,
+        "artists": [
+          {
+            "id": 3557299,
+            "name": "Taylor Swift",
+            "handle": null,
+            "type": "MAIN",
+            "picture": "acce3554-c0dd-428b-b39a-18a06897a7c3"
+          }
+        ],
+        "album": {
+          "id": 198801472,
+          "title": "folklore: the long pond studio sessions (from the Disney+ special) (deluxe edition)",
+          "cover": "47ef0f63-3da6-41e5-9439-19151eca0e3b",
+          "vibrantColor": "#FFFFFF",
+          "videoCover": null,
+          "releaseDate": "2020-08-27"
+        },
+        "mixes": {
+          "TRACK_MIX": "001f2fa5eecf120c04ee8552eb6f73"
+        }
+      },
+      {
+        "id": 198801478,
+        "title": "mirrorball",
+        "duration": 210,
+        "replayGain": 0.0,
+        "peak": 0.0,
+        "allowStreaming": true,
+        "streamReady": true,
+        "payToStream": false,
+        "adSupportedStreamReady": true,
+        "djReady": true,
+        "stemReady": false,
+        "streamStartDate": "2023-02-02T00:00:00.000+0000",
+        "premiumStreamingOnly": false,
+        "trackNumber": 6,
+        "volumeNumber": 1,
+        "version": null,
+        "popularity": 0,
+        "copyright": "℗ 2020 Taylor Swift",
+        "bpm": null,
+        "key": null,
+        "keyScale": null,
+        "url": "http://www.tidal.com/track/198801478",
+        "isrc": "USUG12003322",
+        "editable": false,
+        "explicit": false,
+        "audioQuality": "LOW",
+        "audioModes": [
+          "DOLBY_ATMOS"
+        ],
+        "mediaMetadata": {
+          "tags": [
+            "DOLBY_ATMOS"
+          ]
+        },
+        "upload": false,
+        "accessType": null,
+        "spotlighted": false,
+        "ai": false,
+        "artists": [
+          {
+            "id": 3557299,
+            "name": "Taylor Swift",
+            "handle": null,
+            "type": "MAIN",
+            "picture": "acce3554-c0dd-428b-b39a-18a06897a7c3"
+          }
+        ],
+        "album": {
+          "id": 198801472,
+          "title": "folklore: the long pond studio sessions (from the Disney+ special) (deluxe edition)",
+          "cover": "47ef0f63-3da6-41e5-9439-19151eca0e3b",
+          "vibrantColor": "#FFFFFF",
+          "videoCover": null,
+          "releaseDate": "2020-08-27"
+        },
+        "mixes": {
+          "TRACK_MIX": "001c2f653094a042dc979b86a7c0b0"
+        }
+      },
+      {
+        "id": 198801482,
+        "title": "illicit affairs",
+        "duration": 192,
+        "replayGain": 0.0,
+        "peak": 0.0,
+        "allowStreaming": true,
+        "streamReady": true,
+        "payToStream": false,
+        "adSupportedStreamReady": true,
+        "djReady": true,
+        "stemReady": false,
+        "streamStartDate": "2023-02-02T00:00:00.000+0000",
+        "premiumStreamingOnly": false,
+        "trackNumber": 10,
+        "volumeNumber": 1,
+        "version": null,
+        "popularity": 0,
+        "copyright": "℗ 2020 Taylor Swift",
+        "bpm": null,
+        "key": null,
+        "keyScale": null,
+        "url": "http://www.tidal.com/track/198801482",
+        "isrc": "USUG12003326",
+        "editable": false,
+        "explicit": false,
+        "audioQuality": "LOW",
+        "audioModes": [
+          "DOLBY_ATMOS"
+        ],
+        "mediaMetadata": {
+          "tags": [
+            "DOLBY_ATMOS"
+          ]
+        },
+        "upload": false,
+        "accessType": null,
+        "spotlighted": false,
+        "ai": false,
+        "artists": [
+          {
+            "id": 3557299,
+            "name": "Taylor Swift",
+            "handle": null,
+            "type": "MAIN",
+            "picture": "acce3554-c0dd-428b-b39a-18a06897a7c3"
+          }
+        ],
+        "album": {
+          "id": 198801472,
+          "title": "folklore: the long pond studio sessions (from the Disney+ special) (deluxe edition)",
+          "cover": "47ef0f63-3da6-41e5-9439-19151eca0e3b",
+          "vibrantColor": "#FFFFFF",
+          "videoCover": null,
+          "releaseDate": "2020-08-27"
+        },
+        "mixes": {
+          "TRACK_MIX": "001f07214381d7d4e86fa064d5eb08"
+        }
+      },
+      {
+        "id": 198801486,
+        "title": "betty",
+        "duration": 296,
+        "replayGain": 0.0,
+        "peak": 0.0,
+        "allowStreaming": true,
+        "streamReady": true,
+        "payToStream": false,
+        "adSupportedStreamReady": true,
+        "djReady": true,
+        "stemReady": false,
+        "streamStartDate": "2023-02-02T00:00:00.000+0000",
+        "premiumStreamingOnly": false,
+        "trackNumber": 14,
+        "volumeNumber": 1,
+        "version": null,
+        "popularity": 0,
+        "copyright": "℗ 2020 Taylor Swift",
+        "bpm": null,
+        "key": null,
+        "keyScale": null,
+        "url": "http://www.tidal.com/track/198801486",
+        "isrc": "USUG12003330",
+        "editable": false,
+        "explicit": true,
+        "audioQuality": "LOW",
+        "audioModes": [
+          "DOLBY_ATMOS"
+        ],
+        "mediaMetadata": {
+          "tags": [
+            "DOLBY_ATMOS"
+          ]
+        },
+        "upload": false,
+        "accessType": null,
+        "spotlighted": false,
+        "ai": false,
+        "artists": [
+          {
+            "id": 3557299,
+            "name": "Taylor Swift",
+            "handle": null,
+            "type": "MAIN",
+            "picture": "acce3554-c0dd-428b-b39a-18a06897a7c3"
+          }
+        ],
+        "album": {
+          "id": 198801472,
+          "title": "folklore: the long pond studio sessions (from the Disney+ special) (deluxe edition)",
+          "cover": "47ef0f63-3da6-41e5-9439-19151eca0e3b",
+          "vibrantColor": "#FFFFFF",
+          "videoCover": null,
+          "releaseDate": "2020-08-27"
+        },
+        "mixes": {
+          "TRACK_MIX": "001d18db4a5e28d8cf6203cd022e11"
+        }
+      },
+      {
+        "id": 198801479,
+        "title": "seven",
+        "duration": 210,
+        "replayGain": 0.0,
+        "peak": 0.0,
+        "allowStreaming": true,
+        "streamReady": true,
+        "payToStream": false,
+        "adSupportedStreamReady": true,
+        "djReady": true,
+        "stemReady": false,
+        "streamStartDate": "2023-02-02T00:00:00.000+0000",
+        "premiumStreamingOnly": false,
+        "trackNumber": 7,
+        "volumeNumber": 1,
+        "version": null,
+        "popularity": 0,
+        "copyright": "℗ 2020 Taylor Swift",
+        "bpm": null,
+        "key": null,
+        "keyScale": null,
+        "url": "http://www.tidal.com/track/198801479",
+        "isrc": "USUG12003323",
+        "editable": false,
+        "explicit": false,
+        "audioQuality": "LOW",
+        "audioModes": [
+          "DOLBY_ATMOS"
+        ],
+        "mediaMetadata": {
+          "tags": [
+            "DOLBY_ATMOS"
+          ]
+        },
+        "upload": false,
+        "accessType": null,
+        "spotlighted": false,
+        "ai": false,
+        "artists": [
+          {
+            "id": 3557299,
+            "name": "Taylor Swift",
+            "handle": null,
+            "type": "MAIN",
+            "picture": "acce3554-c0dd-428b-b39a-18a06897a7c3"
+          }
+        ],
+        "album": {
+          "id": 198801472,
+          "title": "folklore: the long pond studio sessions (from the Disney+ special) (deluxe edition)",
+          "cover": "47ef0f63-3da6-41e5-9439-19151eca0e3b",
+          "vibrantColor": "#FFFFFF",
+          "videoCover": null,
+          "releaseDate": "2020-08-27"
+        },
+        "mixes": {
+          "TRACK_MIX": "0012a905f6ad8fb69a8d4ab35c0427"
+        }
+      },
+      {
+        "id": 198801487,
+        "title": "peace",
+        "duration": 235,
+        "replayGain": 0.0,
+        "peak": 0.0,
+        "allowStreaming": true,
+        "streamReady": true,
+        "payToStream": false,
+        "adSupportedStreamReady": true,
+        "djReady": true,
+        "stemReady": false,
+        "streamStartDate": "2023-02-02T00:00:00.000+0000",
+        "premiumStreamingOnly": false,
+        "trackNumber": 15,
+        "volumeNumber": 1,
+        "version": null,
+        "popularity": 0,
+        "copyright": "℗ 2020 Taylor Swift",
+        "bpm": null,
+        "key": null,
+        "keyScale": null,
+        "url": "http://www.tidal.com/track/198801487",
+        "isrc": "USUG12003331",
+        "editable": false,
+        "explicit": true,
+        "audioQuality": "LOW",
+        "audioModes": [
+          "DOLBY_ATMOS"
+        ],
+        "mediaMetadata": {
+          "tags": [
+            "DOLBY_ATMOS"
+          ]
+        },
+        "upload": false,
+        "accessType": null,
+        "spotlighted": false,
+        "ai": false,
+        "artists": [
+          {
+            "id": 3557299,
+            "name": "Taylor Swift",
+            "handle": null,
+            "type": "MAIN",
+            "picture": "acce3554-c0dd-428b-b39a-18a06897a7c3"
+          }
+        ],
+        "album": {
+          "id": 198801472,
+          "title": "folklore: the long pond studio sessions (from the Disney+ special) (deluxe edition)",
+          "cover": "47ef0f63-3da6-41e5-9439-19151eca0e3b",
+          "vibrantColor": "#FFFFFF",
+          "videoCover": null,
+          "releaseDate": "2020-08-27"
+        },
+        "mixes": {
+          "TRACK_MIX": "001edccea14cd43e53eff6fa7508a5"
+        }
+      },
+      {
+        "id": 198801498,
+        "title": "this is me trying",
+        "duration": 209,
+        "replayGain": 0.0,
+        "peak": 0.0,
+        "allowStreaming": true,
+        "streamReady": true,
+        "payToStream": false,
+        "adSupportedStreamReady": true,
+        "djReady": true,
+        "stemReady": false,
+        "streamStartDate": "2023-02-02T00:00:00.000+0000",
+        "premiumStreamingOnly": false,
+        "trackNumber": 9,
+        "volumeNumber": 2,
+        "version": "the long pond studio sessions",
+        "popularity": 0,
+        "copyright": "℗ 2020 Taylor Swift",
+        "bpm": null,
+        "key": null,
+        "keyScale": null,
+        "url": "http://www.tidal.com/track/198801498",
+        "isrc": "USUG12004498",
+        "editable": false,
+        "explicit": false,
+        "audioQuality": "LOW",
+        "audioModes": [
+          "DOLBY_ATMOS"
+        ],
+        "mediaMetadata": {
+          "tags": [
+            "DOLBY_ATMOS"
+          ]
+        },
+        "upload": false,
+        "accessType": null,
+        "spotlighted": false,
+        "ai": false,
+        "artists": [
+          {
+            "id": 3557299,
+            "name": "Taylor Swift",
+            "handle": null,
+            "type": "MAIN",
+            "picture": "acce3554-c0dd-428b-b39a-18a06897a7c3"
+          }
+        ],
+        "album": {
+          "id": 198801472,
+          "title": "folklore: the long pond studio sessions (from the Disney+ special) (deluxe edition)",
+          "cover": "47ef0f63-3da6-41e5-9439-19151eca0e3b",
+          "vibrantColor": "#FFFFFF",
+          "videoCover": null,
+          "releaseDate": "2020-08-27"
+        },
+        "mixes": {
+          "TRACK_MIX": "00130f50242fd7a9b5e3235cf9ec8b"
+        }
+      },
+      {
+        "id": 198801491,
+        "title": "cardigan",
+        "duration": 232,
+        "replayGain": 0.0,
+        "peak": 0.0,
+        "allowStreaming": true,
+        "streamReady": true,
+        "payToStream": false,
+        "adSupportedStreamReady": true,
+        "djReady": true,
+        "stemReady": false,
+        "streamStartDate": "2023-02-02T00:00:00.000+0000",
+        "premiumStreamingOnly": false,
+        "trackNumber": 2,
+        "volumeNumber": 2,
+        "version": "the long pond studio sessions",
+        "popularity": 0,
+        "copyright": "℗ 2020 Taylor Swift",
+        "bpm": null,
+        "key": null,
+        "keyScale": null,
+        "url": "http://www.tidal.com/track/198801491",
+        "isrc": "USUG12004491",
+        "editable": false,
+        "explicit": false,
+        "audioQuality": "LOW",
+        "audioModes": [
+          "DOLBY_ATMOS"
+        ],
+        "mediaMetadata": {
+          "tags": [
+            "DOLBY_ATMOS"
+          ]
+        },
+        "upload": false,
+        "accessType": null,
+        "spotlighted": false,
+        "ai": false,
+        "artists": [
+          {
+            "id": 3557299,
+            "name": "Taylor Swift",
+            "handle": null,
+            "type": "MAIN",
+            "picture": "acce3554-c0dd-428b-b39a-18a06897a7c3"
+          }
+        ],
+        "album": {
+          "id": 198801472,
+          "title": "folklore: the long pond studio sessions (from the Disney+ special) (deluxe edition)",
+          "cover": "47ef0f63-3da6-41e5-9439-19151eca0e3b",
+          "vibrantColor": "#FFFFFF",
+          "videoCover": null,
+          "releaseDate": "2020-08-27"
+        },
+        "mixes": {
+          "TRACK_MIX": "001aa828090038f560cd540f85a9f2"
+        }
+      },
+      {
+        "id": 198801501,
+        "title": "mad woman",
+        "duration": 238,
+        "replayGain": 0.0,
+        "peak": 0.0,
+        "allowStreaming": true,
+        "streamReady": true,
+        "payToStream": false,
+        "adSupportedStreamReady": true,
+        "djReady": true,
+        "stemReady": false,
+        "streamStartDate": "2023-02-02T00:00:00.000+0000",
+        "premiumStreamingOnly": false,
+        "trackNumber": 12,
+        "volumeNumber": 2,
+        "version": "the long pond studio sessions",
+        "popularity": 0,
+        "copyright": "℗ 2020 Taylor Swift",
+        "bpm": null,
+        "key": null,
+        "keyScale": null,
+        "url": "http://www.tidal.com/track/198801501",
+        "isrc": "USUG12004501",
+        "editable": false,
+        "explicit": true,
+        "audioQuality": "LOW",
+        "audioModes": [
+          "DOLBY_ATMOS"
+        ],
+        "mediaMetadata": {
+          "tags": [
+            "DOLBY_ATMOS"
+          ]
+        },
+        "upload": false,
+        "accessType": null,
+        "spotlighted": false,
+        "ai": false,
+        "artists": [
+          {
+            "id": 3557299,
+            "name": "Taylor Swift",
+            "handle": null,
+            "type": "MAIN",
+            "picture": "acce3554-c0dd-428b-b39a-18a06897a7c3"
+          }
+        ],
+        "album": {
+          "id": 198801472,
+          "title": "folklore: the long pond studio sessions (from the Disney+ special) (deluxe edition)",
+          "cover": "47ef0f63-3da6-41e5-9439-19151eca0e3b",
+          "vibrantColor": "#FFFFFF",
+          "videoCover": null,
+          "releaseDate": "2020-08-27"
+        },
+        "mixes": {
+          "TRACK_MIX": "001c22656be050766801d9a6b92aa7"
+        }
+      }
+    ]
+  }
+}

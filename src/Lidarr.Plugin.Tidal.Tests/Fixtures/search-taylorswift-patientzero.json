@@ -1,0 +1,667 @@
+{
+  "albums": {
+    "limit": 100,
+    "offset": 0,
+    "totalNumberOfItems": 30,
+    "items": [
+      {
+        "id": 463900363,
+        "title": "The Life of a Showgirl",
+        "duration": 2506,
+        "streamReady": true,
+        "payToStream": false,
+        "adSupportedStreamReady": true,
+        "djReady": true,
+        "stemReady": false,
+        "streamStartDate": "2025-10-03T00:00:00.000+0000",
+        "allowStreaming": true,
+        "premiumStreamingOnly": false,
+        "numberOfTracks": 12,
+        "numberOfVideos": 0,
+        "numberOfVolumes": 1,
+        "releaseDate": "2025-10-03",
+        "copyright": "© 2025 Taylor Swift",
+        "type": "ALBUM",
+        "version": null,
+        "url": "http://www.tidal.com/album/463900363",
+        "cover": "9a2c79fe-a70b-4f2f-bb7a-2d75fa332a7c",
+        "vibrantColor": "#ceb478",
+        "videoCover": null,
+        "explicit": true,
+        "upc": "00602488067102",
+        "popularity": 0,
+        "audioQuality": "LOSSLESS",
+        "audioModes": [
+          "STEREO"
+        ],
+        "mediaMetadata": {
+          "tags": [
+            "LOSSLESS",
+            "HIRES_LOSSLESS"
+          ]
+        },
+        "upload": false,
+        "ai": false,
+        "artists": [
+          {
+            "id": 3557299,
+            "name": "Taylor Swift",
+            "handle": null,
+            "type": "MAIN",
+            "picture": "acce3554-c0dd-428b-b39a-18a06897a7c3"
+          }
+        ]
+      },
+      {
+        "id": 358232951,
+        "title": "THE TORTURED POETS DEPARTMENT: THE ANTHOLOGY",
+        "duration": 7359,
+        "streamReady": true,
+        "payToStream": false,
+        "adSupportedStreamReady": true,
+        "djReady": true,
+        "stemReady": false,
+        "streamStartDate": "2024-04-19T02:00:00.000+0000",
+        "allowStreaming": true,
+        "premiumStreamingOnly": false,
+        "numberOfTracks": 31,
+        "numberOfVideos": 0,
+        "numberOfVolumes": 1,
+        "releaseDate": "2024-04-19",
+        "copyright": "© 2024 Taylor Swift",
+        "type": "ALBUM",
+        "version": null,
+        "url": "http://www.tidal.com/album/358232951",
+        "cover": "62d546a6-3d6b-4bc4-82cf-baa8ad946eea",
+        "vibrantColor": "#FFFFFF",
+        "videoCover": null,
+        "explicit": true,
+        "upc": "00602465709216",
+        "popularity": 0,
+        "audioQuality": "LOSSLESS",
+        "audioModes": [
+          "STEREO"
+        ],
+        "mediaMetadata": {
+          "tags": [
+            "LOSSLESS",
+            "HIRES_LOSSLESS"
+          ]
+        },
+        "upload": false,
+        "ai": false,
+        "artists": [
+          {
+            "id": 3557299,
+            "name": "Taylor Swift",
+            "handle": null,
+            "type": "MAIN",
+            "picture": "acce3554-c0dd-428b-b39a-18a06897a7c3"
+          }
+        ]
+      },
+      {
+        "id": 149678928,
+        "title": "folklore",
+        "duration": 3818,
+        "streamReady": true,
+        "payToStream": false,
+        "adSupportedStreamReady": true,
+        "djReady": true,
+        "stemReady": false,
+        "streamStartDate": "2020-07-24T00:00:00.000+0000",
+        "allowStreaming": true,
+        "premiumStreamingOnly": false,
+        "numberOfTracks": 16,
+        "numberOfVideos": 0,
+        "numberOfVolumes": 1,
+        "releaseDate": "2020-07-24",
+        "copyright": "© 2020 Taylor Swift",
+        "type": "ALBUM",
+        "version": null,
+        "url": "http://www.tidal.com/album/149678928",
+        "cover": "6d906200-a184-4920-b4fa-c2f13c8b341c",
+        "vibrantColor": "#FFFFFF",
+        "videoCover": null,
+        "explicit": true,
+        "upc": "00602435037967",
+        "popularity": 0,
+        "audioQuality": "LOSSLESS",
+        "audioModes": [
+          "STEREO"
+        ],
+        "mediaMetadata": {
+          "tags": [
+            "LOSSLESS",
+            "HIRES_LOSSLESS"
+          ]
+        },
+        "upload": false,
+        "ai": false,
+        "artists": [
+          {
+            "id": 3557299,
+            "name": "Taylor Swift",
+            "handle": null,
+            "type": "MAIN",
+            "picture": "acce3554-c0dd-428b-b39a-18a06897a7c3"
+          }
+        ]
+      },
+      {
+        "id": 116125894,
+        "title": "Lover",
+        "duration": 3708,
+        "streamReady": true,
+        "payToStream": false,
+        "adSupportedStreamReady": true,
+        "djReady": true,
+        "stemReady": false,
+        "streamStartDate": "2019-08-23T00:00:00.000+0000",
+        "allowStreaming": true,
+        "premiumStreamingOnly": false,
+        "numberOfTracks": 18,
+        "numberOfVideos": 0,
+        "numberOfVolumes": 1,
+        "releaseDate": "2019-08-23",
+        "copyright": "© 2019 Taylor Swift",
+        "type": "ALBUM",
+        "version": null,
+        "url": "http://www.tidal.com/album/116125894",
+        "cover": "0af461b8-96b3-4711-a27b-1cb765263111",
+        "vibrantColor": "#edb8d7",
+        "videoCover": null,
+        "explicit": false,
+        "upc": "00602508009204",
+        "popularity": 0,
+        "audioQuality": "LOSSLESS",
+        "audioModes": [
+          "STEREO"
+        ],
+        "mediaMetadata": {
+          "tags": [
+            "LOSSLESS",
+            "HIRES_LOSSLESS"
+          ]
+        },
+        "upload": false,
+        "ai": false,
+        "artists": [
+          {
+            "id": 3557299,
+            "name": "Taylor Swift",
+            "handle": null,
+            "type": "MAIN",
+            "picture": "acce3554-c0dd-428b-b39a-18a06897a7c3"
+          }
+        ]
+      },
+      {
+        "id": 255207222,
+        "title": "Midnights",
+        "duration": 2648,
+        "streamReady": true,
+        "payToStream": false,
+        "adSupportedStreamReady": true,
+        "djReady": true,
+        "stemReady": false,
+        "streamStartDate": "2022-10-21T00:00:00.000+0000",
+        "allowStreaming": true,
+        "premiumStreamingOnly": false,
+        "numberOfTracks": 13,
+        "numberOfVideos": 0,
+        "numberOfVolumes": 1,
+        "releaseDate": "2022-10-21",
+        "copyright": "© 2022 Taylor Swift",
+        "type": "ALBUM",
+        "version": null,
+        "url": "http://www.tidal.com/album/255207222",
+        "cover": "699ee144-c4ed-4da0-83fd-87fb736bb9a7",
+        "vibrantColor": "#873d40",
+        "videoCover": null,
+        "explicit": true,
+        "upc": "00602448638786",
+        "popularity": 0,
+        "audioQuality": "LOSSLESS",
+        "audioModes": [
+          "STEREO"
+        ],
+        "mediaMetadata": {
+          "tags": [
+            "LOSSLESS",
+            "HIRES_LOSSLESS"
+          ]
+        },
+        "upload": false,
+        "ai": false,
+        "artists": [
+          {
+            "id": 3557299,
+            "name": "Taylor Swift",
+            "handle": null,
+            "type": "MAIN",
+            "picture": "acce3554-c0dd-428b-b39a-18a06897a7c3"
+          }
+        ]
+      },
+      {
+        "id": 121255042,
+        "title": "reputation",
+        "duration": 3344,
+        "streamReady": true,
+        "payToStream": false,
+        "adSupportedStreamReady": true,
+        "djReady": true,
+        "stemReady": false,
+        "streamStartDate": "2019-11-01T00:00:00.000+0000",
+        "allowStreaming": true,
+        "premiumStreamingOnly": false,
+        "numberOfTracks": 15,
+        "numberOfVideos": 0,
+        "numberOfVolumes": 1,
+        "releaseDate": "2017-11-10",
+        "copyright": "© 2017 Taylor Swift",
+        "type": "ALBUM",
+        "version": null,
+        "url": "http://www.tidal.com/album/121255042",
+        "cover": "0631391c-8161-41dc-9cda-e11a91729268",
+        "vibrantColor": "#FFFFFF",
+        "videoCover": null,
+        "explicit": false,
+        "upc": "00843930048700",
+        "popularity": 0,
+        "audioQuality": "LOSSLESS",
+        "audioModes": [
+          "STEREO"
+        ],
+        "mediaMetadata": {
+          "tags": [
+            "LOSSLESS",
+            "HIRES_LOSSLESS"
+          ]
+        },
+        "upload": false,
+        "ai": false,
+        "artists": [
+          {
+            "id": 3557299,
+            "name": "Taylor Swift",
+            "handle": null,
+            "type": "MAIN",
+            "picture": "acce3554-c0dd-428b-b39a-18a06897a7c3"
+          }
+        ]
+      }
+    ]
+  },
+  "tracks": {
+    "limit": 100,
+    "offset": 0,
+    "totalNumberOfItems": 104,
+    "items": [
+      {
+        "id": 564082172,
+        "title": "Patient Zero",
+        "duration": 226,
+        "replayGain": -10.02,
+        "peak": 0.998383,
+        "allowStreaming": true,
+        "streamReady": true,
+        "payToStream": false,
+        "adSupportedStreamReady": true,
+        "djReady": true,
+        "stemReady": false,
+        "streamStartDate": "2026-09-25T00:00:00.000+0000",
+        "premiumStreamingOnly": false,
+        "trackNumber": 1,
+        "volumeNumber": 2,
+        "version": null,
+        "popularity": 72,
+        "copyright": "℗ 2026 Taylor Swift",
+        "bpm": null,
+        "key": null,
+        "keyScale": null,
+        "url": "http://www.tidal.com/track/564082172",
+        "isrc": "USUG12602391",
+        "editable": false,
+        "explicit": false,
+        "audioQuality": "LOSSLESS",
+        "audioModes": [
+          "STEREO"
+        ],
+        "mediaMetadata": {
+          "tags": [
+            "LOSSLESS"
+          ]
+        },
+        "upload": false,
+        "accessType": null,
+        "spotlighted": false,
+        "ai": false,
+        "artists": [
+          {
+            "id": 3557299,
+            "name": "Taylor Swift",
+            "handle": null,
+            "type": "MAIN",
+            "picture": "58fac352-8af0-45b8-90e1-7183f2a6d04b"
+          }
+        ],
+        "album": {
+          "id": 564082153,
+          "title": "The Life of a Showgirl: The Encore",
+          "cover": "85feff23-7c92-4fd7-bdae-59ae490c1dd9",
+          "vibrantColor": "#ec0b6f",
+          "videoCover": null,
+          "releaseDate": "2026-09-25"
+        },
+        "mixes": {
+          "TRACK_MIX": "0015ce9edc57d91eb939cf03533437"
+        }
+      },
+      {
+        "id": 564163435,
+        "title": "Patient Zero",
+        "duration": 226,
+        "replayGain": 0.0,
+        "peak": 0.0,
+        "allowStreaming": true,
+        "streamReady": true,
+        "payToStream": false,
+        "adSupportedStreamReady": true,
+        "djReady": true,
+        "stemReady": false,
+        "streamStartDate": "2026-09-25T00:00:00.000+0000",
+        "premiumStreamingOnly": false,
+        "trackNumber": 1,
+        "volumeNumber": 2,
+        "version": null,
+        "popularity": 72,
+        "copyright": "℗ 2026 Taylor Swift",
+        "bpm": null,
+        "key": null,
+        "keyScale": null,
+        "url": "http://www.tidal.com/track/564163435",
+        "isrc": "USUG12609686",
+        "editable": false,
+        "explicit": false,
+        "audioQuality": "LOW",
+        "audioModes": [
+          "DOLBY_ATMOS"
+        ],
+        "mediaMetadata": {
+          "tags": [
+            "DOLBY_ATMOS"
+          ]
+        },
+        "upload": false,
+        "accessType": null,
+        "spotlighted": false,
+        "ai": false,
+        "artists": [
+          {
+            "id": 3557299,
+            "name": "Taylor Swift",
+            "handle": null,
+            "type": "MAIN",
+            "picture": "58fac352-8af0-45b8-90e1-7183f2a6d04b"
+          }
+        ],
+        "album": {
+          "id": 564163414,
+          "title": "The Life of a Showgirl: The Encore",
+          "cover": "a6208425-06f2-42fd-ac92-c0f1aed55e29",
+          "vibrantColor": "#ec0b6f",
+          "videoCover": null,
+          "releaseDate": "2026-09-25"
+        },
+        "mixes": {
+          "TRACK_MIX": "001c44381256521d31822813433cb6"
+        }
+      },
+      {
+        "id": 564163463,
+        "title": "Patient Zero",
+        "duration": 226,
+        "replayGain": 0.0,
+        "peak": 0.0,
+        "allowStreaming": true,
+        "streamReady": true,
+        "payToStream": false,
+        "adSupportedStreamReady": true,
+        "djReady": true,
+        "stemReady": false,
+        "streamStartDate": "2026-09-25T00:00:00.000+0000",
+        "premiumStreamingOnly": false,
+        "trackNumber": 1,
+        "volumeNumber": 2,
+        "version": null,
+        "popularity": 72,
+        "copyright": "℗ 2026 Taylor Swift",
+        "bpm": null,
+        "key": null,
+        "keyScale": null,
+        "url": "http://www.tidal.com/track/564163463",
+        "isrc": "USUG12609686",
+        "editable": false,
+        "explicit": false,
+        "audioQuality": "LOW",
+        "audioModes": [
+          "DOLBY_ATMOS"
+        ],
+        "mediaMetadata": {
+          "tags": [
+            "DOLBY_ATMOS"
+          ]
+        },
+        "upload": false,
+        "accessType": null,
+        "spotlighted": false,
+        "ai": false,
+        "artists": [
+          {
+            "id": 3557299,
+            "name": "Taylor Swift",
+            "handle": null,
+            "type": "MAIN",
+            "picture": "58fac352-8af0-45b8-90e1-7183f2a6d04b"
+          }
+        ],
+        "album": {
+          "id": 564163448,
+          "title": "The Life of a Showgirl: The Encore",
+          "cover": "1a3cc1af-8acb-478f-b59c-09707f7b394e",
+          "vibrantColor": "#ec0b6f",
+          "videoCover": null,
+          "releaseDate": "2026-09-25"
+        },
+        "mixes": {
+          "TRACK_MIX": "0010b5efff63c9039aeb81c909f826"
+        }
+      },
+      {
+        "id": 116125896,
+        "title": "Cruel Summer",
+        "duration": 178,
+        "replayGain": -10.07,
+        "peak": 1.0,
+        "allowStreaming": true,
+        "streamReady": true,
+        "payToStream": false,
+        "adSupportedStreamReady": true,
+        "djReady": true,
+        "stemReady": false,
+        "streamStartDate": "2019-08-23T00:00:00.000+0000",
+        "premiumStreamingOnly": false,
+        "trackNumber": 2,
+        "volumeNumber": 1,
+        "version": null,
+        "popularity": 0,
+        "copyright": "℗ 2019 Taylor Swift",
+        "bpm": 85,
+        "key": null,
+        "keyScale": null,
+        "url": "http://www.tidal.com/track/116125896",
+        "isrc": "USUG11901472",
+        "editable": false,
+        "explicit": false,
+        "audioQuality": "LOSSLESS",
+        "audioModes": [
+          "STEREO"
+        ],
+        "mediaMetadata": {
+          "tags": [
+            "LOSSLESS",
+            "HIRES_LOSSLESS"
+          ]
+        },
+        "upload": false,
+        "accessType": null,
+        "spotlighted": false,
+        "ai": false,
+        "artists": [
+          {
+            "id": 3557299,
+            "name": "Taylor Swift",
+            "handle": null,
+            "type": "MAIN",
+            "picture": "acce3554-c0dd-428b-b39a-18a06897a7c3"
+          }
+        ],
+        "album": {
+          "id": 116125894,
+          "title": "Lover",
+          "cover": "0af461b8-96b3-4711-a27b-1cb765263111",
+          "vibrantColor": "#edb8d7",
+          "videoCover": null,
+          "releaseDate": "2019-08-23"
+        },
+        "mixes": {
+          "TRACK_MIX": "001ff3a8b4a83e30e31a31d8e3e4f2"
+        }
+      },
+      {
+        "id": 121255046,
+        "title": "Don’t Blame Me",
+        "duration": 236,
+        "replayGain": -9.62,
+        "peak": 0.99884,
+        "allowStreaming": true,
+        "streamReady": true,
+        "payToStream": false,
+        "adSupportedStreamReady": true,
+        "djReady": true,
+        "stemReady": false,
+        "streamStartDate": "2019-11-01T00:00:00.000+0000",
+        "premiumStreamingOnly": false,
+        "trackNumber": 4,
+        "volumeNumber": 1,
+        "version": null,
+        "popularity": 0,
+        "copyright": "℗ 2017 Taylor Swift",
+        "bpm": 136,
+        "key": "F",
+        "keyScale": "MAJOR",
+        "url": "http://www.tidal.com/track/121255046",
+        "isrc": "USCJY1750006",
+        "editable": false,
+        "explicit": false,
+        "audioQuality": "LOSSLESS",
+        "audioModes": [
+          "STEREO"
+        ],
+        "mediaMetadata": {
+          "tags": [
+            "LOSSLESS",
+            "HIRES_LOSSLESS"
+          ]
+        },
+        "upload": false,
+        "accessType": null,
+        "spotlighted": false,
+        "ai": false,
+        "artists": [
+          {
+            "id": 3557299,
+            "name": "Taylor Swift",
+            "handle": null,
+            "type": "MAIN",
+            "picture": "acce3554-c0dd-428b-b39a-18a06897a7c3"
+          }
+        ],
+        "album": {
+          "id": 121255042,
+          "title": "reputation",
+          "cover": "0631391c-8161-41dc-9cda-e11a91729268",
+          "vibrantColor": "#FFFFFF",
+          "videoCover": null,
+          "releaseDate": "2017-11-10"
+        },
+        "mixes": {
+          "TRACK_MIX": "0010650e857021a3cb3bfd975c0289"
+        }
+      },
+      {
+        "id": 121444602,
+        "title": "Bad Blood",
+        "duration": 212,
+        "replayGain": -10.17,
+        "peak": 0.99884,
+        "allowStreaming": true,
+        "streamReady": true,
+        "payToStream": false,
+        "adSupportedStreamReady": true,
+        "djReady": true,
+        "stemReady": false,
+        "streamStartDate": "2019-11-01T00:00:00.000+0000",
+        "premiumStreamingOnly": false,
+        "trackNumber": 8,
+        "volumeNumber": 1,
+        "version": null,
+        "popularity": 0,
+        "copyright": "℗ 2014 Taylor Swift",
+        "bpm": 85,
+        "key": "G",
+        "keyScale": "MAJOR",
+        "url": "http://www.tidal.com/track/121444602",
+        "isrc": "USCJY1431369",
+        "editable": false,
+        "explicit": false,
+        "audioQuality": "LOSSLESS",
+        "audioModes": [
+          "STEREO"
+        ],
+        "mediaMetadata": {
+          "tags": [
+            "LOSSLESS",
+            "HIRES_LOSSLESS"
+          ]
+        },
+        "upload": false,
+        "accessType": null,
+        "spotlighted": false,
+        "ai": false,
+        "artists": [
+          {
+            "id": 3557299,
+            "name": "Taylor Swift",
+            "handle": null,
+            "type": "MAIN",
+            "picture": "acce3554-c0dd-428b-b39a-18a06897a7c3"
+          }
+        ],
+        "album": {
+          "id": 121444594,
+          "title": "1989 (Deluxe Edition)",
+          "cover": "371728b2-075e-4586-84dd-0b91e55e6492",
+          "vibrantColor": "#b5685b",
+          "videoCover": null,
+          "releaseDate": "2014-10-27"
+        },
+        "mixes": {
+          "TRACK_MIX": "001cd9507ff8a53e70d592ee03aed0"
+        }
+      }
+    ]
+  }
+}

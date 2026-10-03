@@ -1,0 +1,54 @@
+{
+  "id": 564163448,
+  "title": "The Life of a Showgirl: The Encore",
+  "duration": 3348,
+  "streamReady": true,
+  "payToStream": false,
+  "adSupportedStreamReady": true,
+  "djReady": true,
+  "stemReady": false,
+  "streamStartDate": "2026-09-25T00:00:00.000+0000",
+  "allowStreaming": true,
+  "premiumStreamingOnly": false,
+  "numberOfTracks": 16,
+  "numberOfVideos": 0,
+  "numberOfVolumes": 2,
+  "releaseDate": "2026-09-25",
+  "copyright": "© 2026 Taylor Swift",
+  "type": "ALBUM",
+  "version": null,
+  "url": "http://www.tidal.com/album/564163448",
+  "cover": "1a3cc1af-8acb-478f-b59c-09707f7b394e",
+  "vibrantColor": "#ec0b6f",
+  "videoCover": null,
+  "explicit": false,
+  "upc": "00881061652991",
+  "popularity": 72,
+  "audioQuality": "LOW",
+  "audioModes": [
+    "DOLBY_ATMOS"
+  ],
+  "mediaMetadata": {
+    "tags": [
+      "DOLBY_ATMOS"
+    ]
+  },
+  "upload": false,
+  "ai": false,
+  "artist": {
+    "id": 3557299,
+    "name": "Taylor Swift",
+    "handle": null,
+    "type": "MAIN",
+    "picture": "58fac352-8af0-45b8-90e1-7183f2a6d04b"
+  },
+  "artists": [
+    {
+      "id": 3557299,
+      "name": "Taylor Swift",
+      "handle": null,
+      "type": "MAIN",
+      "picture": "58fac352-8af0-45b8-90e1-7183f2a6d04b"
+    }
+  ]
+}
