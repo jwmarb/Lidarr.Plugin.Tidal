@@ -104,7 +104,7 @@ If that prints a version, the remux will work. The download client's **Test** bu
 fails with a clear message when the conversion settings are on but FFmpeg is missing, so a
 broken setup is caught at save time rather than silently at download time.
 
-### Installing the plugin
+### Installing the plugin 🔌
 
 1. In Lidarr, go to `System -> Plugins`, paste the repository URL into the GitHub URL box, and press **Install**. Restart Lidarr when it asks you to.
 
@@ -129,7 +129,18 @@ broken setup is caught at save time rather than silently at download time.
 11. Optional: in `Settings -> Media Management`, enable **Rename Tracks** so each album lands in its own folder rather than loose in the artist directory.
 12. Optional: to keep `.lrc` lyrics, enable **Import Extra Files** in the same screen and add `lrc` to the list.
 
-### Download client settings 🔧
+### Settings 🔧
+
+**Indexer**
+
+| Setting | Default | Description |
+| --- | --- | --- |
+| `Tidal URL` | — | Read-only. The PKCE login URL to open in a browser; it regenerates on each page load. |
+| `Redirect Url` | — | The `tidal.com/android/login/auth?code=...` URL you land on after approving the login. Single-use and expires within minutes. |
+| `Config Path` | — | Directory holding the account credentials, so a session survives a restart. Required, and validated as a real path. |
+| `Early Download Limit` | none | Days before a release date that Lidarr may grab from this indexer. Advanced. |
+
+**Download client**
 
 | Setting | Default | Description |
 | --- | --- | --- |
@@ -214,6 +225,54 @@ dotnet run --project src/Lidarr.Plugin.Tidal.Tests/Tools/TidalLogin \
   -p:SolutionDir=$PWD/ext/Lidarr/src/ -p:NuGetAudit=false -p:SkipILRepack=true
 ```
 
+## Building from Source 🔨
+
+```sh
+git clone --recurse-submodules https://github.com/jwmarb/Lidarr.Plugin.Tidal
+cd Lidarr.Plugin.Tidal
+dotnet build src/*.sln -c Release -f net8.0 \
+  -p:WarningsNotAsErrors=NU1902 \
+  -p:AssemblyVersion=3.1.2.4913 -p:FileVersion=3.1.2.4913 -p:Deterministic=true
+```
+
+> [!IMPORTANT]
+> **The version pin is not optional, and it must match the Lidarr you install into.**
+> `ext/Lidarr` stamps its assemblies `10.0.0.*`, so an unpinned local build records a
+> reference to a `Lidarr.Core` version no released Lidarr provides. Set it to your
+> instance's version, which `System -> Status` reports (`3.1.2.4913` above).
+
+The failure is not contained to this plugin. Lidarr enumerates types across every
+loaded plugin assembly during registration, so a mismatched reference throws inside
+that scan and **takes the other installed plugins down with it** — `System -> Plugins`
+comes back empty and unrelated indexers and download clients vanish from the running
+instance. The log names the missing assembly, not the plugin at fault:
+
+```
+Could not load file or assembly 'Lidarr.Core, Version=10.0.0.17518'
+```
+
+CI pins this already, in two independent places — the plugin's own version in
+`src/Directory.Build.props` and the Lidarr reference in
+`ext/Lidarr/src/Directory.Build.props` — so released artifacts are unaffected. The
+`-p:` flags above override both at once, which is why they are preferred over editing
+either file: `ext/Lidarr` is a submodule tracking upstream Lidarr, and an edit there is
+lost on the next `git submodule update`.
+
+Verify before installing, rather than discovering it at runtime:
+
+```sh
+strings -a _plugins/net8.0/Lidarr.Plugin.Tidal/Lidarr.Plugin.Tidal.dll | grep -c TidalSharp
+```
+
+A non-zero count means ILRepack merged its dependencies, which Lidarr's plugin loader
+requires. Note that `dotnet test` builds with `-p:SkipILRepack=true` and overwrites the
+merged DLL with an unmerged one, so **always rebuild after running the tests** and
+before packaging.
+
+The result lands in `_plugins/net8.0/Lidarr.Plugin.Tidal/`. Copy the `.dll`, `.pdb`, and
+`.deps.json` into `<lidarr-config>/plugins/jwmarb/Lidarr.Plugin.Tidal/` and restart
+Lidarr twice — once to drop the old assembly, once to load the new one.
+
 ## Known Limitations ⚠️
 
 - **Search results estimate file size.** Tidal's API does not report exact sizes, so releases carry a figure derived from duration and bitrate. Quality decisions that lean on size are approximate.
@@ -226,11 +285,13 @@ dotnet run --project src/Lidarr.Plugin.Tidal.Tests/Tools/TidalLogin \
 
 Upstream [TrevTV/Lidarr.Plugin.Tidal](https://github.com/TrevTV/Lidarr.Plugin.Tidal) ships no license file, so no explicit grant covers this fork's own code. Treat it as all-rights-reserved unless upstream adds a license.
 
-These libraries are merged into the final plugin assembly, which is what ILRepack produces to work around a bug in Lidarr's plugin loader. Their terms travel with the built DLL — note that **TidalSharp is GPL-3.0**, which governs redistribution of that artifact:
+These libraries are merged into the final plugin assembly by ILRepack, to work around a bug in Lidarr's plugin loader. Their terms travel with the built DLL — note that **TidalSharp is GPL-3.0**, which governs redistribution of that artifact:
 
-- [TidalSharp](https://github.com/TrevTV/TidalSharp) — GPL-3.0 ([LICENSE](https://github.com/TrevTV/TidalSharp/blob/main/LICENSE))
-- [TagLibSharp](https://github.com/mono/taglib-sharp) — LGPL-2.1 ([COPYING](https://github.com/mono/taglib-sharp/blob/main/COPYING))
-- [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json) — MIT ([LICENSE](https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md))
+| Library | License |
+| --- | --- |
+| [TidalSharp](https://github.com/TrevTV/TidalSharp) | [GPL-3.0](https://github.com/TrevTV/TidalSharp/blob/main/LICENSE) |
+| [TagLibSharp](https://github.com/mono/taglib-sharp) | [LGPL-2.1](https://github.com/mono/taglib-sharp/blob/main/COPYING) |
+| [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json) | [MIT](https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md) |
 
 ---
 
