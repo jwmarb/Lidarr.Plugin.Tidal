@@ -17,6 +17,7 @@ retry storm (flat-delay, uncapped retries that renewed Tidal's cumulative thrott
 - `ext/Lidarr/` — git submodule of upstream Lidarr (branch `plugins`), vendored only for the `Lidarr.Core` reference
 - `src/Directory.Build.props` — repo-wide MSBuild (forked from Lidarr's: output paths, version stamp, warnings-as-errors)
 - `_plugins/`, `_tests/`, `_temp/` — gitignored build outputs; the shipping DLL lands in `_plugins/net8.0/Lidarr.Plugin.Tidal/`
+- `docs/SETUP.md` — end-user setup guide (PKCE login, FFmpeg image, delay/quality profiles); its Test/log messages and field labels are quoted verbatim from the code, so update it when you change a user-facing string. Stage 3 and the README's "Which build you have" tell old builds apart by the `Remux To FLAC` / `Extract FLAC From M4A` label and work around the GitHub-URL install picking an old release (Lidarr's `PluginService` needs a `*net8.0.zip` asset); revise both once a correctly named release ships
 
 ## WHERE TO LOOK
 | Task | Path |
